@@ -402,14 +402,6 @@ Cette refactorisation prouve que nous maîtrisons :
 **Objectif :** Transformation d'un code monolithique en architecture modulaire  
 **Date :** Octobre 2025
 
----
 
-### 📋 Notes Importantes
-
-> **Compte Rendu Obligatoire :** Ce projet fait l'objet d'une évaluation notée.  
-> **Échéance :** Soumission avant la prochaine séance, 23h59 précises.  
-> **Focus :** Expliquer pourquoi cette architecture est supérieure à la version monolithique.
-
----
 
 *Ce README documente la transformation réussie d'une API monolithique en une architecture structurée, maintenable et évolutive. Il constitue la base pour les développements futurs du projet MERN.*
