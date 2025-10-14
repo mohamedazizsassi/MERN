@@ -532,5 +532,3 @@ La gestion d'erreurs centralisée avec `try...catch` offre un contrôle précis 
 **Outils de Test :** Postman  
 
 ---
-
-> **Note :** Ce compte rendu détaille l'implémentation complète du système de gestion d'utilisateurs avec les meilleures pratiques de programmation asynchrone et de gestion d'erreurs. L'architecture mise en place est extensible et prête pour le développement de fonctionnalités avancées.
