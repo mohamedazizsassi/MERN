@@ -527,7 +527,7 @@ La gestion d'erreurs centralisée avec `try...catch` offre un contrôle précis 
 ---
 
 **Date de Réalisation :** 14 Octobre 2025  
-**Durée du Développement :** 3 heures  
+**Durée du Développement :** 2 heures  
 **Technologies Utilisées :** Node.js, Express.js, MongoDB, Mongoose  
 **Outils de Test :** Postman  
 
