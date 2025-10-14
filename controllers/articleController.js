@@ -1,24 +1,37 @@
-const testapi = (req, res) => {
-    res.status(200).json({
-        message: 'Le test a fonctionné !',
-        success: true
-    });
-};
+const Article = require('../models/Articles');
 
-// --- Route pour gérer les requêtes POST ---
-const createArticle = (req, res) => {
-    const articleData = req.body;
-    console.log('Données reçues :', articleData);
+//@desc Recuperer tous les articles
+//@route GET /api/articles
+const getAllArticles = async (req, res) => {
+    try {
+        // await met en pause la fonction jusqu ’à ce que Article .find () retourne un résultat
+        const articles = await Article.find();
+        res.status(200).json(articles);
+    }
+    catch (err) {
+        res.status(500).json({ message: 'Erreur lors de la récupération des articles .', error: err.message });
+    }
+}
+// @desc Créer un nouvel article
+// @route POST /api/ articles
+const createArticle = async (req, res) => {
+    try {
+        const newArticle = new Article({
+            title: req.body.title,
+            content: req.body.content,
+            author: req.body.author,
+        });
 
-    res.status(201).json({
-        message: 'Article créé avec succès !',
-        article: {
-            id: Date.now(),
-            ...articleData
-        }
-    });
+        // await attend que la promesse de . save () soit résolue
+        const savedArticle = await newArticle.save();
+        res.status(201).json(savedArticle);
+
+    }
+    catch {
+        res.status(400).json({ message: 'Erreur lors de la création de l\'article.', error: err.message });
+    }
 };
 module.exports = {
-    testapi,
+    getAllArticles,
     createArticle
 };

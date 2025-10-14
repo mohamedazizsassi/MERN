@@ -1,4 +1,10 @@
+require('dotenv').config();// Doit être en haut pour charger les variables d’environnement avant toute utilisation
+
 const express = require('express');
+const connectDB = require('./config/db');
+
+connectDB(); // Connexion à la base de données
+
 const app = express();
 const PORT = 3000;
 

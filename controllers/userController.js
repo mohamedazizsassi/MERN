@@ -1,21 +1,31 @@
-const getAllUsers = (req, res) => {
-    res.status(200).json({
-        message: 'Liste de tous les utilisateurs',
-        users: [] // Ceci serait remplacé par une vraie liste d'utilisateurs
-    });
-}
+const User = require('../models/Users');
 
-const createUser = (req, res) => {
-    const userData = req.body;
-    console.log('Données reçues :', userData);
+//@desc Recuperer tous les utilisateurs
+//@route GET /api/users
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la récupération des utilisateurs.', error: error.message });
+    }
+};
 
-    res.status(201).json({
-        message: 'Utilisateur créé avec succès !',
-        user: {
-            id: Date.now(),
-            ...userData
-        }
-    });
+//@desc Créer un nouvel utilisateur
+//@route POST /api/users
+const createUser = async (req, res) => {
+    try {
+        const newUser = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        });
+        // await attend que la promesse de . save () soit résolue
+        const savedUser = await newUser.save();
+        res.status(201).json(savedUser);
+    } catch (error) {
+        res.status(400).json({ message: 'Erreur lors de la création de l\'utilisateur.', error: error.message });
+    }
 };
 
 module.exports = {
